@@ -1,13 +1,23 @@
+// App.js
 const express = require("express");
-const locations_route = require('./locations_route');
-const { sequelize } = require('./sequelize');
 const session = require('express-session');
-
+const { createSequelizeInstance, defineLocationModel } = require('./sequelize');
+const { createLocationsRouter } = require('./locations_route');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sessionStore = new SequelizeStore({ db: sequelize });
 
-const app = express();
-app.use(express.json());//
-app.use('/api', locations_route);
+const createApp = (config) => {
+  const app = express();
+  const sequelize = createSequelizeInstance(config);
+  const Location = defineLocationModel(sequelize);
 
-module.exports = app;
+  const sessionStore = new SequelizeStore({ db: sequelize });
+
+  app.use(express.json());
+
+  const locationsRouter = createLocationsRouter({ Location });
+  app.use('/api', locationsRouter);
+
+  return app;
+};
+
+module.exports = createApp;
