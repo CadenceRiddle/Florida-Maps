@@ -7,6 +7,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db: sequelize });
 
 const app = express();
+app.use(express.json());//
 app.use('/api', locations_route);
 
 module.exports = app;
