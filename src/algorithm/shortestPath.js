@@ -48,4 +48,4 @@ function dijkstra(graph, startNode, endNode) {
     return [];
 };
 
-module.exports = { dijkstra };
+module.exports = dijkstra;

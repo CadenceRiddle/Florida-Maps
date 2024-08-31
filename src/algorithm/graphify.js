@@ -27,4 +27,4 @@ const graphify = async (database) => {
   return graph; // Don't forget to return the graph
 }
 
-module.exports = { graphify };
+module.exports =  graphify;
