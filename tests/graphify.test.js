@@ -1,4 +1,4 @@
-const { graphify } = require('../src/algorithm/graphify');
+const graphify = require('../src/algorithm/graphify');
 const express = require('express');
 const { Location } = require('../src/sequelize');
 

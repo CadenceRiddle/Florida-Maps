@@ -1,4 +1,4 @@
-const { dijkstra } = require('../src/algorithm/shortestPath');
+const dijkstra = require('../src/algorithm/shortestPath');
 
 test('check to see if dijkstra runs correctly', () => {
   const graph = {
