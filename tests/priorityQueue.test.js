@@ -1,4 +1,4 @@
-const { PriorityQueue } = require('../src/priorityQueue');
+const { PriorityQueue } = require('../src/algorithm/priorityQueue');
 
 test('check to make sure the priority queue is created', () => {
   const temp = new PriorityQueue();
