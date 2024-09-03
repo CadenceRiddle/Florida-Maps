@@ -11,6 +11,7 @@ const createAlgorithmRouter = ({ Location }) => {
     if (!locationA || !locationB) {
         return res.status(400).json({ error: 'Both locations are required' });
     }
+    console.log(locationA, locationB);
 
     try {
       const targetA = await Location.findOne({
@@ -20,13 +21,12 @@ const createAlgorithmRouter = ({ Location }) => {
         where: { locationName: locationB }
       });
 
-      console.log("Target A:", targetA);
-      console.log("Target B:", targetB);
-
-      // Check if both locations were found
       if (!targetA || !targetB) {
         return res.status(404).json({ error: 'One or both locations not found' });
       }
+
+      console.log("Target A:", targetA.locationName);
+      console.log("Target B:", targetB.locationName);
 
       const graph = await graphify(Location);
 

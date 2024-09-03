@@ -56,6 +56,7 @@ function dijkstra(graph, startNode, endNode) {
 
     // Return an empty array if no path is found
     return [];
+    
 };
 
 module.exports = dijkstra;
