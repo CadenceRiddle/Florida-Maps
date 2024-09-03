@@ -22,10 +22,10 @@ describe('should test the graphify function', () => {
 
   it('should be able to graph the database', async () => {
     const mockLocations = [
-      { locationID: 1, locationName: 'Location 1', neighbors: {"2": 5, "4": 10}},
-      { locationID: 2, locationName: 'Location 2', neighbors: {"1": 5, "3": 6}},
-      { locationID: 3, locationName: 'Location 3', neighbors: {"2": 6}},
-      { locationID: 4, locationName: 'Location 4', neighbors: {"1": 10}}
+      { locationID: 1, locationName: 'Location 1', neighbors: {"Location 2": 5, "Location 4": 10}},
+      { locationID: 2, locationName: 'Location 2', neighbors: {"Location 1": 5, "Location 3": 6}},
+      { locationID: 3, locationName: 'Location 3', neighbors: {"Location 2": 6}},
+      { locationID: 4, locationName: 'Location 4', neighbors: {"Location 1": 10}}
     ];
     
     Location.findAll.mockResolvedValue(mockLocations);
