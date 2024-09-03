@@ -12,19 +12,23 @@ const graphify = async (database) => {
       graph[node.locationID] = {};
     }
 
-    // For each neighbor, create an edge with weight
-    for (const [neighbor, weight] of Object.entries(node.neighbors)) {
-      if (!graph[neighbor]) {
-        graph[neighbor] = {};
-      }
+    // For each neighbor, create an edge with weight using locationID as key
+    for (const [neighborName, weight] of Object.entries(node.neighbors)) {
+      const neighbor = nodes.find(n => n.locationName === neighborName);
+      if (neighbor) {
+        if (!graph[neighbor.locationID]) {
+          graph[neighbor.locationID] = {};
+        }
 
-      // Add the bidirectional edge (both ways)
-      graph[node.locationID][neighbor] = weight;
-      graph[neighbor][node.locationID] = weight;
+        // Add the bidirectional edge (both ways)
+        graph[node.locationID][neighbor.locationID] = weight;
+        graph[neighbor.locationID][node.locationID] = weight;
+      }
     }
   });
 
-  return graph; // Don't forget to return the graph
+  return graph; // Return the graph
 }
+
 
 module.exports =  graphify;
